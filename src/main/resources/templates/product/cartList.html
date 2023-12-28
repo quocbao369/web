@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <!-- Thêm link CSS của Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<main layout:fragment="content">
+    <!-- Sử dụng container của Bootstrap để căn giữa nội dung -->
+    <div class="container">
+        <h2 class="text-center mb-4">Cart</h2>
+        <a class="btn btn-info mb-3" th:href="@{'/cart/history'}">View Order History</a>
+        <!-- Sử dụng bảng Bootstrap -->
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name Product</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Total</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${userCart}">
+                <td th:text="${cartItem.name}"></td>
+                <td th:text="${cartItem.stock}"></td>
+                <td>$<span th:text="${cartItem.total}"></span></td>
+                <td>
+                    <!-- Sử dụng nút Bootstrap để làm đẹp -->
+                    <a class="btn btn-primary" th:href="@{'/products/' + ${cartItem.productID}}">Details</a>
+                    <a class="btn btn-primary" th:href="@{'/order/checkout/' + ${cartItem.cartID}}">Checkout</a>
+                    <a class="btn btn-danger" th:href="@{'/cart/remove/' + ${cartItem.id}}">Remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+<!-- Thêm script và link JavaScript của Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-sQq1ihv1JAX+8u5poMvQl3h3/DlgJYYrQbFj+HmlxFqFCqHyF9EOMfWMk25UkImRA"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

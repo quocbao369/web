@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Product details</title>
+</head>
+<body>
+<main layout:fragment="content">
+       <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <h1>Product Details</h1>
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" th:src="@{${product.image}}" alt="..." /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">SKU: BST-498</div>
+                    <h1 class="display-5 fw-bolder"><span th:text="${product.name}"></span></h1>
+                    <div class="fs-5 mb-5">
+                        <span>$<span th:text="${product.price}"></span></span>
+                    </div>
+                    <p class="lead"><span th:text="${product.description}"></span></p>
+                    <form th:action="@{/cart/add}" method="post">
+                    <div class="d-flex">
+                        <input type="hidden" name="productId" th:value="${product.productID}" />
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num" name="stock" value="1" style="max-width: 3rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <section class="py-5">
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Product Specifications</h2>
+                            <ul class="list-unstyled">
+                                <li><strong>Screen Size:</strong> <span th:text="${parameter.screensize}"></span><span>inch</span></li>
+                                <li><strong>Processor:</strong> <span th:text="${parameter.processor}"></span></li>
+                                <li><strong>Ram:</strong> <span th:text="${parameter.ram}"></span><span>GB</span></li>
+                                <li><strong>Storage:</strong> <span th:text="${parameter.storage}"></span><span>GB</span></li>
+                                <li><strong>Camera:</strong> <span th:text="${parameter.camera}"></span><span>MP</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>

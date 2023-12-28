@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout History</title>
+    <!-- Thêm link CSS của Bootstrap hoặc các thư viện khác nếu cần -->
+</head>
+<body>
+<main layout:fragment="content">
+    <div class="container">
+        <h2 class="text-center mb-4">Checkout History</h2>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date</th>
+                <th scope="col">Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="checkout : ${checkoutHistory}">
+                <td th:text="${checkout.productName}"></td>
+                <td><span>$</span><span th:text="${checkout.total}"></span></td>
+                <td th:text="${checkout.orderdate}"></td>
+                <td th:text="${checkout.quantity}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<!-- Thêm script và link JavaScript của Bootstrap hoặc các thư viện khác nếu cần -->
+</body>
+</html>

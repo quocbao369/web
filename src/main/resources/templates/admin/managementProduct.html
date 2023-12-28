@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutAdmin.html}">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Product management</title>
+</head>
+
+<body>
+<main layout:fragment="mainadmin" id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Product Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Product Management</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <form th:action="@{/adminProduct}" method="post" th:object="${productInfor}">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product</h5>
+
+                        <!-- General Form Elements -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">ID product</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" th:field="*{productID}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">ID Parameter</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" th:field="*{parameterID}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Name product</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" th:field="*{nameProduct}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Price ($)</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" th:field="*{price}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Description</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <textarea class="form-control" style="height: 100px" th:field="*{description}"></textarea>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Stock</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" th:field="*{stock}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Link image</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{image}">
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Specifications</h5>
+
+                        <!-- General Form Elements -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Screen Size</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{screensize}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Processor</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{processor}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Ram</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" th:field="*{ram}">
+                                    </div>
+                                </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Storage</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" th:field="*{storage}">
+                                    </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Camera (MP)</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" th:field="*{camera}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Submit Button</label>
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                                </div>
+                            </div><!-- End General Form Elements -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+            <p th:if="${error}" style="color: red" th:text="${error}"></p>
+        </form>
+    </section>
+
+</main><!-- End #main -->
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutAdmin.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Management</title>
+</head>
+<body>
+<main layout:fragment="mainadmin" id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Table product</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <a th:href="@{/adminProduct}"><button style="position: relative;left: 85%;margin: 20px;" type="submit" class="btn btn-primary">Add Product</button></a>
+
+  <section class="section dashboard">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Product Table</h5>
+        <!-- Bordered Table -->
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">ProductID</th>
+            <th scope="col">ParameterID</th>
+            <th scope="col">Name Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Screen Size (inch)</th>
+            <th scope="col">Processor</th>
+            <th scope="col">Ram (GB)</th>
+            <th scope="col">Storage (GB)</th>
+            <th scope="col">Camera (MP)</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="productInfor : ${productInfors}">
+            <td th:text="${productInfor.productID}"></td>
+            <td th:text="${productInfor.parameterID}"></td>
+            <td th:text="${productInfor.nameProduct}"></td>
+            <td th:text="${productInfor.price}"></td>
+            <td th:text="${productInfor.description}"></td>
+            <td th:text="${productInfor.stock}"></td>
+            <td th:text="${productInfor.screensize}"></td>
+            <td th:text="${productInfor.processor}"></td>
+            <td th:text="${productInfor.ram}"></td>
+            <td th:text="${productInfor.storage}"></td>
+            <td th:text="${productInfor.camera}"></td>
+            <td><img class="card-img-top" th:src="@{${productInfor.image}}" alt="Product Image" /></td>
+            <td><a class="btn btn-danger" th:href="@{'/remove?productID=' + ${productInfor.productID} + '&ID=' + ${productInfor.parameterID}}">Remove</a></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <!-- End Bordered Table -->
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+</body>
+</html>
